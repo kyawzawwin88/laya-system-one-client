@@ -143,7 +143,6 @@ export function renderMetadata(response: DecideResponse): HTMLElement {
 export function renderSuccess(response: DecideResponse): DocumentFragment {
   const frag = document.createDocumentFragment();
   const answers = el("section", "answers");
-  answers.append(el("h2", undefined, "Answers"));
   if (response.answers) {
     for (const [name, answer] of Object.entries(response.answers)) {
       answers.append(renderAnswer(name, answer));
@@ -154,6 +153,20 @@ export function renderSuccess(response: DecideResponse): DocumentFragment {
   return frag;
 }
 
+function prettyJson(raw: string): string {
+  try {
+    return JSON.stringify(JSON.parse(raw), null, 2);
+  } catch {
+    return raw;
+  }
+}
+
+export function setRawState(region: HTMLElement, raw: string): void {
+  region.className = "response raw";
+  region.replaceChildren();
+  region.append(el("pre", "answer-json", prettyJson(raw)));
+}
+
 export function setEmptyState(region: HTMLElement): void {
   region.className = "response empty";
   region.replaceChildren();
@@ -161,7 +174,7 @@ export function setEmptyState(region: HTMLElement): void {
     el(
       "p",
       "response-message",
-      "Nothing has been sent yet. Fill the form and press Send decide.",
+      "Nothing has been sent yet. Fill the form and press Send.",
     ),
   );
 }
@@ -170,7 +183,7 @@ export function setLoadingState(region: HTMLElement): void {
   region.className = "response loading";
   region.replaceChildren();
   region.append(
-    el("p", "response-message", "Sending decide request…"),
+    el("p", "response-message", "Sending."),
   );
 }
 

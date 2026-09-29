@@ -4,3 +4,4 @@ _bmad-output
 .specstory
 docs
 .env
+..cursorindexingignore
