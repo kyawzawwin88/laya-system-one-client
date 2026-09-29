@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laya Decide</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <p class="draft-label">draft without direction</p>
+        <h1>Laya Decide</h1>
+        <p class="lede">Send one decide request and read the typed answers.</p>
+      </header>
+
+      <form id="decide-form" class="form" novalidate>
+        <div class="field">
+          <label for="base-url">Base URL</label>
+          <input
+            id="base-url"
+            name="base-url"
+            type="url"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="model">Model</label>
+          <input id="model" name="model" type="text" autocomplete="off" />
+        </div>
+
+        <div class="field">
+          <label for="keep-alive">Keep alive</label>
+          <input
+            id="keep-alive"
+            name="keep-alive"
+            type="text"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="field">
+          <label for="state">State</label>
+          <textarea id="state" name="state" rows="4"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="questions">Questions (JSON)</label>
+          <textarea
+            id="questions"
+            name="questions"
+            rows="16"
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <button id="submit" type="submit">Send decide</button>
+      </form>
+
+      <section
+        id="response"
+        class="response empty"
+        aria-live="polite"
+        aria-atomic="true"
+      ></section>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
