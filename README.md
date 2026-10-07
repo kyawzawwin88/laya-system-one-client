@@ -4,6 +4,8 @@ Chrome extension for sending one Laya decide request and reading the typed respo
 
 The page is a full-screen playground. The left column edits the request. The right column shows the API request that will be sent, the response, and session history.
 
+Available in chrome app store: <a href="https://chromewebstore.google.com/detail/system-one-playground-ui/kbocpanpfjanemolcoaaekpjbnignmhk">https://chromewebstore.google.com/detail/system-one-playground-ui/kbocpanpfjanemolcoaaekpjbnignmhk</a>
+
 ## Request
 
 `POST {base URL}/api/decide` with JSON:
